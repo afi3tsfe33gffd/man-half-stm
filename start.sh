@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Starting X-UI + StormDNS + Nginx..."
+echo "Starting X-UI + StormDNS + SNI Spoof + Nginx..."
 
 export NGINX_PORT=3000
 
@@ -27,7 +27,7 @@ envsubst '${NGINX_PORT}' \
     > /etc/nginx/nginx.conf
 
 # -----------------------------
-# Start StormDNS Client
+# Start StormDNS
 # -----------------------------
 
 echo "Starting StormDNS Client..."
@@ -41,7 +41,21 @@ STORMDNS_PID=$!
 
 echo "StormDNS PID: $STORMDNS_PID"
 
-# Give StormDNS some time to start
+sleep 2
+
+# -----------------------------
+# Start SNI Spoof
+# -----------------------------
+
+echo "Starting SNI Spoof..."
+
+cd /opt/sni-spoof
+
+./sni-spoof-rs config.json &
+
+SNI_SPOOF_PID=$!
+
+echo "SNI Spoof PID: $SNI_SPOOF_PID"
 
 sleep 2
 
