@@ -22,6 +22,7 @@ RUN mkdir -p \
     /etc/x-ui \
     /var/log/x-ui \
     /usr/local/stormdns \
+    /usr/local/sni-spoof \
     /opt/stormdns \
     /opt/sni-spoof
 
@@ -32,9 +33,9 @@ COPY stormdns/client_config.toml /usr/local/stormdns/
 RUN chmod +x /usr/local/stormdns/StormDNS_Client_Linux_AMD64
 
 # SNI Spoof
-COPY sni-spoof/ /opt/sni-spoof/
+COPY sni-spoof/sni-spoof-rs /usr/local/sni-spoof/
 
-RUN chmod +x /opt/sni-spoof/sni-spoof-rs
+RUN chmod +x /usr/local/sni-spoof/sni-spoof-rs
 
 # Nginx و Startup
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
