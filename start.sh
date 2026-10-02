@@ -30,19 +30,27 @@ envsubst '${NGINX_PORT}' \
 # Start StormDNS
 # -----------------------------
 
-echo "Starting StormDNS Client..."
+if [ "${ENABLE_STORMDNS:-false}" = "true" ]; then
 
-cd /usr/local/stormdns
+    echo "Starting StormDNS Client..."
 
-./StormDNS_Client_Linux_AMD64 \
-    --config /usr/local/stormdns/client_config.toml \
-    --resolvers /opt/stormdns/client_resolvers.txt &
+    cd /usr/local/stormdns
 
-STORMDNS_PID=$!
+    ./StormDNS_Client_Linux_AMD64 \
+        --config /usr/local/stormdns/client_config.toml \
+        --resolvers /opt/stormdns/client_resolvers.txt &
 
-echo "StormDNS PID: $STORMDNS_PID"
+    STORMDNS_PID=$!
 
-sleep 2
+    echo "StormDNS PID: $STORMDNS_PID"
+
+    sleep 2
+
+else
+
+    echo "StormDNS disabled."
+
+fi
 
 # -----------------------------
 # Start SNI Spoof
