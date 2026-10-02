@@ -21,13 +21,15 @@ RUN curl -L https://github.com/mhsanaei/3x-ui/releases/download/v3.8.5/x-ui-linu
 RUN mkdir -p \
     /etc/x-ui \
     /var/log/x-ui \
+    /usr/local/stormdns \
     /opt/stormdns \
     /opt/sni-spoof
 
 # StormDNS
-COPY stormdns/ /opt/stormdns/
+COPY stormdns/StormDNS_Client_Linux_AMD64 /usr/local/stormdns/
+COPY stormdns/client_config.toml /usr/local/stormdns/
 
-RUN chmod +x /opt/stormdns/StormDNS_Client_Linux_AMD64
+RUN chmod +x /usr/local/stormdns/StormDNS_Client_Linux_AMD64
 
 # SNI Spoof
 COPY sni-spoof/ /opt/sni-spoof/
