@@ -9,6 +9,7 @@ RUN apk add --no-cache \
     sqlite \
     nginx \
     gettext \
+    unzip \
     && ln -sf /usr/share/zoneinfo/Asia/Tehran /etc/localtime
 
 # -----------------------------
