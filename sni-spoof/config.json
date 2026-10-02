@@ -3,7 +3,7 @@
   "listeners": [
     {
       "listen": "127.0.0.1:40443",
-      "connect": "188.114.99.0:443",
+      "connect": "162.159.152.4:443",
       "fake_sni": "security.vercel.com",
       "conn_timeout_sec": 5,
       "handshake_timeout_sec": 2,
