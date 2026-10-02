@@ -32,10 +32,11 @@ envsubst '${NGINX_PORT}' \
 
 echo "Starting StormDNS Client..."
 
-cd /opt/stormdns
+cd /usr/local/stormdns
 
 ./StormDNS_Client_Linux_AMD64 \
-    --config /opt/stormdns/client_config.toml &
+    --config /usr/local/stormdns/client_config.toml \
+    --resolvers /opt/stormdns/client_resolvers.txt &
 
 STORMDNS_PID=$!
 
