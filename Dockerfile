@@ -17,12 +17,24 @@ RUN curl -L https://github.com/mhsanaei/3x-ui/releases/download/v3.8.5/x-ui-linu
     && rm /tmp/x-ui.tar.gz \
     && chmod +x /usr/local/x-ui/x-ui
 
-RUN mkdir -p /etc/x-ui /var/log/x-ui /opt/stormdns
+# ایجاد مسیرها
+RUN mkdir -p \
+    /etc/x-ui \
+    /var/log/x-ui \
+    /opt/stormdns \
+    /opt/sni-spoof
 
+# StormDNS
 COPY stormdns/ /opt/stormdns/
 
 RUN chmod +x /opt/stormdns/StormDNS_Client_Linux_AMD64
 
+# SNI Spoof
+COPY sni-spoof/ /opt/sni-spoof/
+
+RUN chmod +x /opt/sni-spoof/sni-spoof-rs
+
+# Nginx و Startup
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
 COPY start.sh /start.sh
 
