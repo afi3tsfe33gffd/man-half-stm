@@ -38,7 +38,7 @@ if [ "${ENABLE_STORMDNS:-false}" = "true" ]; then
 
     ./StormDNS_Client_Linux_AMD64 \
         --config /usr/local/stormdns/client_config.toml \
-        --resolvers /opt/stormdns/client_resolvers.txt &
+        --resolvers /opt/config/client_resolvers.txt &
 
     STORMDNS_PID=$!
 
@@ -60,7 +60,7 @@ echo "Starting SNI Spoof..."
 
 cd /usr/local/sni-spoof
 
-./sni-spoof-rs /opt/sni-spoof/config.json &
+./sni-spoof-rs /opt/config/config.json &
 
 SNI_SPOOF_PID=$!
 
