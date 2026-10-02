@@ -23,8 +23,7 @@ RUN mkdir -p \
     /var/log/x-ui \
     /usr/local/stormdns \
     /usr/local/sni-spoof \
-    /opt/stormdns \
-    /opt/sni-spoof
+    /opt/config
 
 # StormDNS
 COPY stormdns/StormDNS_Client_Linux_AMD64 /usr/local/stormdns/
