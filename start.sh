@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Starting X-UI + StormDNS + SNI Spoof + Nginx..."
+echo "Starting X-UI + StormDNS + SNI Spoof + Secondary Xray + Nginx..."
 
 export NGINX_PORT=3000
 
@@ -67,6 +67,32 @@ SNI_SPOOF_PID=$!
 echo "SNI Spoof PID: $SNI_SPOOF_PID"
 
 sleep 2
+
+# -----------------------------
+# Start Secondary Xray
+# -----------------------------
+
+if [ "${ENABLE_XRAY:-false}" = "true" ]; then
+
+    echo "Starting Secondary Xray..."
+
+    cp /opt/config/pconfig.json /usr/local/xray/config.json
+
+    cd /usr/local/xray
+
+    ./xray &
+
+    XRAY_PID=$!
+
+    echo "Secondary Xray PID: $XRAY_PID"
+
+    sleep 2
+
+else
+
+    echo "Secondary Xray disabled."
+
+fi
 
 # -----------------------------
 # Start 3x-ui
