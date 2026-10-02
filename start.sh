@@ -58,9 +58,9 @@ fi
 
 echo "Starting SNI Spoof..."
 
-cd /opt/sni-spoof
+cd /usr/local/sni-spoof
 
-./sni-spoof-rs config.json &
+./sni-spoof-rs /opt/sni-spoof/config.json &
 
 SNI_SPOOF_PID=$!
 
