@@ -60,7 +60,7 @@ echo "Starting SNI Spoof..."
 
 cd /usr/local/sni-spoof
 
-./sni-spoof-rs -config /opt/config/config.ini &
+./sni-spoof-rs /opt/config/config.ini &
 
 SNI_SPOOF_PID=$!
 
