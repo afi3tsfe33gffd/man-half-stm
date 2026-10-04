@@ -16,7 +16,7 @@ RUN apk add --no-cache \
 # Install 3x-ui
 # -----------------------------
 
-RUN curl -L https://github.com/mhsanaei/3x-ui/releases/download/v3.8.5/x-ui-linux-amd64.tar.gz \
+RUN curl -L https://github.com/mhsanaei/3x-ui/releases/download/v3.9.0/x-ui-linux-amd64.tar.gz \
     -o /tmp/x-ui.tar.gz \
     && tar -xzf /tmp/x-ui.tar.gz -C /usr/local/ \
     && rm /tmp/x-ui.tar.gz \
